@@ -9,16 +9,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/editTextTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_title"
-            android:imeOptions="actionDone"
-            android:inputType="textCapWords" >
+            android:orientation="horizontal" >
 
-            <requestFocus />
-        </EditText>
+            <EditText
+                android:id="@+id/editTextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/hint_new_edit_title"
+                android:imeOptions="actionDone"
+                android:inputType="textCapWords" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,6 +44,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/button_new_edit_date" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/editTextVenue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/hint_new_edit_venue"
+                android:imeOptions="actionDone"
+                android:inputType="textPostalAddress" >
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/editTextNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/hint_new_edit_note"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine" >
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_new_edit_atendees" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/multiAutoCompleteTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                 />
+
         </LinearLayout>
     </LinearLayout>
 

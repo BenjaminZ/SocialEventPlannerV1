@@ -23,7 +23,7 @@ public class NewEventActivity extends Activity implements OnClickListener {
 	private double[] location;
 	private String note;
 	private String[] attendees;
-	private EditText editTitle;
+	private EditText editTitle, editVenue, editNote;
 	private Button buttonEditTime, buttonEditDate;
 
 	@Override
@@ -36,6 +36,8 @@ public class NewEventActivity extends Activity implements OnClickListener {
 		buttonEditDate = (Button) findViewById(R.id.buttonNewEditDate);
 		buttonEditTime.setOnClickListener(this);
 		buttonEditDate.setOnClickListener(this);
+		editVenue = (EditText) findViewById(R.id.editTextVenue);
+		editNote = (EditText) findViewById(R.id.editTextNote);
 		
 	}
 
