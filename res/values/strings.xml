@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Social Event Planner</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_schedule_event">Schedule an Event</string>
+    <string name="button_edit_event">Edit an Event</string>
+    <string name="button_view_calendar">View Calendar</string>
+    <string name="button_view_all_events">View All Events</string>
+	<string name="hint_title">Event Title</string>
+	<string name="button_new_edit_time">Time</string>
+	<string name="button_new_edit_date">Date</string>
+    
+</resources>
