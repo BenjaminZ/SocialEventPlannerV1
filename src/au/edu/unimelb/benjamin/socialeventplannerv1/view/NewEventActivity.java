@@ -11,13 +11,19 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.MultiAutoCompleteTextView.CommaTokenizer;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.TimePicker;
 import au.edu.unimelb.benjamin.socialeventplannerv1.R;
 import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDate;
@@ -48,13 +54,47 @@ public class NewEventActivity extends Activity {
 		buttonEditDate.setOnClickListener(buttonClickListener);
 		
 		editVenue = (EditText) findViewById(R.id.editTextVenue);
-		
 		editNote = (EditText) findViewById(R.id.editTextNote);
 		
+		EditEmailListener editEmailListener = new EditEmailListener();
 		editEmail = (MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextViewEmail);
+		editEmail.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+		editEmail.setOnEditorActionListener(editEmailListener);
+		editEmail.setOnFocusChangeListener(editEmailListener);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 	             android.R.layout.simple_dropdown_item_1line, setAdapter());
 		editEmail.setAdapter(adapter);
+		
+		
+	}
+	
+	class EditEmailListener implements OnEditorActionListener, OnFocusChangeListener {
+
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			
+			tokenEraser();
+		}
+
+		@Override
+		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+			
+			tokenEraser();
+			return false;
+		}
+		
+		private void tokenEraser() {
+			
+			if (!TextUtils.isEmpty(editEmail.getText())) {
+				
+				String text = editEmail.getText().toString();
+				if (text.charAt(text.length() - 1) == ' ') {
+					
+					editEmail.setText(text.substring(0, text.length() - 2));
+				}
+			}
+		}
+		
 	}
 	
 	private String[] setAdapter() {
@@ -78,7 +118,6 @@ public class NewEventActivity extends Activity {
 		
 	}
 	
-
 	class ButtonClickListener implements OnClickListener {
 		
 		@Override
