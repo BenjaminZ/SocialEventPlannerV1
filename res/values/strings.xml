@@ -7,11 +7,11 @@
     <string name="button_edit_event">Edit an Event</string>
     <string name="button_view_calendar">View Calendar</string>
     <string name="button_view_all_events">View All Events</string>
-	<string name="hint_new_edit_title">Event Title</string>
+	<string name="textview_new_edit_title">Enter Title:</string>
 	<string name="button_new_edit_time">Time</string>
 	<string name="button_new_edit_date">Date</string>
-	<string name="hint_new_edit_venue">Enter Venue</string>
-	<string name="hint_new_edit_note">Enter Note</string>
+	<string name="textview_new_edit_venue">Enter Venue:</string>
+	<string name="textview_new_edit_note">Enter Note:</string>
 	<string name="textview_new_edit_atendees">Enter Atendees:</string>
     
 </resources>
