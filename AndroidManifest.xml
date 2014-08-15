@@ -31,6 +31,7 @@
             android:name=".view.NewEventActivity"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <activity android:name=".view.EditEventsActivity"></activity>
     </application>
 
 </manifest>

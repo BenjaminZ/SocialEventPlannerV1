@@ -2,7 +2,7 @@ package au.edu.unimelb.benjamin.socialeventplannerv1.testdrive;
 
 import android.app.Activity;
 import android.os.Bundle;
-import au.edu.unimelb.benjamin.socialeventplannerv1.module.Event;
+import au.edu.unimelb.benjamin.socialeventplannerv1.event.Events;
 
 public class EventTester extends Activity{
 

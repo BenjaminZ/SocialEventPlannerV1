@@ -24,18 +24,10 @@
         android:text="@string/button_schedule_event" />
 
     <Button
-        android:id="@+id/buttonEditEvent"
-        style="@style/MainActivityButtonStyle"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonScheduleEvent"
-        android:layout_centerHorizontal="true"
-        android:text="@string/button_edit_event" />
-
-    <Button
         android:id="@+id/buttonViewCalendar"
         style="@style/MainActivityButtonStyle"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonEditEvent"
+        android:layout_below="@+id/buttonScheduleEvent"
         android:layout_centerHorizontal="true"
         android:text="@string/button_view_calendar" />
 

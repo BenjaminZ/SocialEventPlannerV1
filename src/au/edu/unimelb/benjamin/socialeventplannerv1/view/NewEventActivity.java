@@ -21,11 +21,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
-import android.widget.MultiAutoCompleteTextView.CommaTokenizer;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.TimePicker;
 import au.edu.unimelb.benjamin.socialeventplannerv1.R;
+import au.edu.unimelb.benjamin.socialeventplannerv1.event.Events;
+import au.edu.unimelb.benjamin.socialeventplannerv1.event.EventsBuilder;
+import au.edu.unimelb.benjamin.socialeventplannerv1.util.DataUtil;
 import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDate;
 
 public class NewEventActivity extends Activity {
@@ -33,11 +35,10 @@ public class NewEventActivity extends Activity {
 	private String title;
 	private int minute, hour, day, month, year;
 	private String venue;
-	private double[] location;
 	private String note;
 	private String[] attendees;
 	private EditText editTitle, editVenue, editNote;
-	private Button buttonEditTime, buttonEditDate;
+	private Button buttonEditTime, buttonEditDate, buttonDone;
 	private MultiAutoCompleteTextView editEmail;
 
 	@Override
@@ -45,16 +46,31 @@ public class NewEventActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_event);
 		
+		findEditTexts();
+		findButtons();
+		findEditEmail();
+		
+	}
+	
+	private void findEditTexts() {
+		
 		editTitle = (EditText) findViewById(R.id.editTextTitle);
+		editVenue = (EditText) findViewById(R.id.editTextVenue);
+		editNote = (EditText) findViewById(R.id.editTextNote);
+	}
+	
+	private void findButtons() {
 		
 		buttonEditTime = (Button) findViewById(R.id.buttonNewEditTime);
 		buttonEditDate = (Button) findViewById(R.id.buttonNewEditDate);
 		ButtonClickListener buttonClickListener = new ButtonClickListener();
 		buttonEditTime.setOnClickListener(buttonClickListener);
 		buttonEditDate.setOnClickListener(buttonClickListener);
-		
-		editVenue = (EditText) findViewById(R.id.editTextVenue);
-		editNote = (EditText) findViewById(R.id.editTextNote);
+		buttonDone = (Button) findViewById(R.id.buttonNewDone);
+		buttonDone.setOnClickListener(buttonClickListener);
+	}
+	
+	private void findEditEmail() {
 		
 		EditEmailListener editEmailListener = new EditEmailListener();
 		editEmail = (MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextViewEmail);
@@ -62,10 +78,15 @@ public class NewEventActivity extends Activity {
 		editEmail.setOnEditorActionListener(editEmailListener);
 		editEmail.setOnFocusChangeListener(editEmailListener);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-	             android.R.layout.simple_dropdown_item_1line, setAdapter());
+				android.R.layout.simple_dropdown_item_1line, setAdapter());
 		editEmail.setAdapter(adapter);
-		
-		
+	}
+	
+	private void setParameters() {
+		title = editTitle.getText().toString();
+		venue = editVenue.getText().toString();
+		note = editNote.getText().toString();
+		attendees = editEmail.getText().toString().split(", ");
 	}
 	
 	class EditEmailListener implements OnEditorActionListener, OnFocusChangeListener {
@@ -133,6 +154,15 @@ public class NewEventActivity extends Activity {
 			case R.id.buttonNewEditDate:
 				
 				datePicker();
+				break;
+				
+			case R.id.buttonNewDone:
+				//TODO
+				setParameters();
+				EventsBuilder eventsBuilder = new EventsBuilder(title, minute, hour, day, month, year, venue, note, attendees);
+				Events event = eventsBuilder.getEvent();
+				DataUtil.saveData(NewEventActivity.this, event);
+				finish();
 				break;
 				
 			default:

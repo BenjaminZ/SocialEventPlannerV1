@@ -13,5 +13,7 @@
 	<string name="textview_new_edit_venue">Enter Venue:</string>
 	<string name="textview_new_edit_note">Enter Note:</string>
 	<string name="textview_new_edit_atendees">Enter Atendees:</string>
+	<string name="button_new_done">Done</string>
+	<string name="data_file_name">data.dat</string>
     
 </resources>

@@ -5,12 +5,12 @@ import java.util.Date;
 
 public class TimeAndDate {
 
-	public static int getTime() {
-		SimpleDateFormat formatter = new SimpleDateFormat("hhmm");
-		Date currentTime = new Date(System.currentTimeMillis());
-		int time = Integer.parseInt(formatter.format(currentTime));
+	public static int getCurrentDay() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd");
+		Date currentDay = new Date(System.currentTimeMillis());
+		int day = Integer.parseInt(formatter.format(currentDay));
 		
-		return time;
+		return day;
 	}
 	
 	public static int getCurrentHour() {
@@ -27,11 +27,19 @@ public class TimeAndDate {
 		return Integer.parseInt(formatter.format(currentMinute));
 	}
 	
-	public static long getDate() {
-		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyy");
-		Date currentDate = new Date(System.currentTimeMillis());
-		long date = Integer.parseInt(formatter.format(currentDate));
+	public static int getCurrentMonth() {
+		SimpleDateFormat formatter = new SimpleDateFormat("MM");
+		Date currentMonth = new Date(System.currentTimeMillis());
+		int month = Integer.parseInt(formatter.format(currentMonth));
 		
-		return date;
+		return month;
+	}
+	
+	public static int getCurrentYear() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yy");
+		Date currentYear = new Date(System.currentTimeMillis());
+		int year = Integer.parseInt(formatter.format(currentYear));
+		
+		return year;
 	}
 }

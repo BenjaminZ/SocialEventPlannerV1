@@ -7,11 +7,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import au.edu.unimelb.benjamin.socialeventplannerv1.R;
-import au.edu.unimelb.benjamin.socialeventplannerv1.testdrive.EventTester;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-	private Button buttonNewEvent, buttonEditEvent, buttonViewCalendar, buttonViewAllEvents;
+	private Button buttonNewEvent, buttonViewCalendar, buttonViewAllEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //TODO
@@ -19,12 +18,10 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
         
         buttonNewEvent = (Button) findViewById(R.id.buttonScheduleEvent);
-        buttonEditEvent = (Button) findViewById(R.id.buttonEditEvent);
         buttonViewCalendar = (Button) findViewById(R.id.buttonViewCalendar);
         buttonViewAllEvents = (Button) findViewById(R.id.buttonViewAllEvents);
         
         buttonNewEvent.setOnClickListener(this);
-        buttonEditEvent.setOnClickListener(this);
         buttonViewCalendar.setOnClickListener(this);
         buttonViewAllEvents.setOnClickListener(this);
         
@@ -34,7 +31,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 
-				Intent testIntent = new Intent(MainActivity.this, EventTester.class);
+				Intent testIntent = new Intent(MainActivity.this, EditEventsActivity.class);
 				startActivity(testIntent);
 			}
 		});
