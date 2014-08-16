@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import au.edu.unimelb.benjamin.socialeventplannerv1.R;
 import android.content.Context;
-import au.edu.unimelb.benjamin.socialeventplannerv1.event.Events;
+import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
 
 public class DataUtil {
 	//TODO Android IO

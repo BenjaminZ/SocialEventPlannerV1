@@ -32,6 +32,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity android:name=".view.EditEventsActivity"></activity>
+        <activity android:name=".view.ViewEvents"></activity>
     </application>
 
 </manifest>

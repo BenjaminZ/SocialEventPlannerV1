@@ -25,8 +25,8 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.TimePicker;
 import au.edu.unimelb.benjamin.socialeventplannerv1.R;
-import au.edu.unimelb.benjamin.socialeventplannerv1.event.Events;
-import au.edu.unimelb.benjamin.socialeventplannerv1.event.EventsBuilder;
+import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
+import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.EventsBuilder;
 import au.edu.unimelb.benjamin.socialeventplannerv1.util.DataUtil;
 import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDate;
 
@@ -143,7 +143,6 @@ public class NewEventActivity extends Activity {
 		
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
 			
 			switch (v.getId()) {
 			case R.id.buttonNewEditTime:
@@ -157,7 +156,6 @@ public class NewEventActivity extends Activity {
 				break;
 				
 			case R.id.buttonNewDone:
-				//TODO
 				setParameters();
 				EventsBuilder eventsBuilder = new EventsBuilder(title, minute, hour, day, month, year, venue, note, attendees);
 				Events event = eventsBuilder.getEvent();

@@ -1,10 +1,10 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.event;
+package au.edu.unimelb.benjamin.socialeventplannerv1.model.event;
 
 import java.io.Serializable;
 
 
 
-public class Events implements Serializable{
+public class Events implements Serializable,Comparable<Events>{
 
 	/**
 	 * 
@@ -16,7 +16,7 @@ public class Events implements Serializable{
 	private double longitude, latitude;
 	private String note;
 	private String[] attendees;
-	private String id;
+	private long id;
 	
 	protected Events(String title, int minute, int hour, int day, int month, int year, String venue, double longitude, double latitude, String note, String[] attendees) {
 		this.title = title;
@@ -30,7 +30,7 @@ public class Events implements Serializable{
 		this.latitude = latitude;
 		this.note = note;
 		this.attendees = attendees;
-		id = System.currentTimeMillis() + venue;
+		id = System.currentTimeMillis();
 	}
 
 
@@ -133,8 +133,20 @@ public class Events implements Serializable{
 		this.attendees = attendees;
 	}
 
-	public String getId() {
+	public long getId() {
 		return id;
+	}
+
+
+	@Override
+	public int compareTo(Events another) {
+		if (id < another.getId()) {
+			return -1;
+		} else if (id == another.getId()) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 	
 	

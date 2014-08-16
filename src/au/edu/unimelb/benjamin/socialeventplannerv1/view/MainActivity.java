@@ -46,7 +46,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			intent.setClass(MainActivity.this, NewEventActivity.class);
 			startActivity(intent);
 			break;
-
+			
+		case R.id.buttonViewAllEvents:
+			intent.setClass(MainActivity.this, ViewEvents.class);
+			startActivity(intent);
+			break;
+			
 		default:
 			break;
 		}

@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.event;
+package au.edu.unimelb.benjamin.socialeventplannerv1.model.event;
 
 import android.text.TextUtils;
 import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDate;
@@ -57,7 +57,7 @@ public class EventsBuilder {
 	}
 	
 	private void getLocation() {
-		//TODU
+		//TODO
 		
 		latitude = 0.0;
 		longitude = 0.0;
