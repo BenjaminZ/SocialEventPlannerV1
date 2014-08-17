@@ -15,5 +15,6 @@
 	<string name="textview_new_edit_atendees">Enter Atendees:</string>
 	<string name="button_new_done">Done</string>
 	<string name="data_file_name">data.dat</string>
+	<string name="button_delete_event">Delete</string>
     
 </resources>

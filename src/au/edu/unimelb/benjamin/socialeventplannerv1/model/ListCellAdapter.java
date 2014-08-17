@@ -58,7 +58,7 @@ public class ListCellAdapter extends BaseAdapter {
 		if (convertView != null) {
 			outerLL = (LinearLayout) convertView;
 		} else {
-			outerLL = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.adapter_events_list_cell, parent);
+			outerLL = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.adapter_events_list_cell, null);
 		}
 		
 		TextView textViewTitle, textViewDate, textViewNumOfInvits;
@@ -68,8 +68,14 @@ public class ListCellAdapter extends BaseAdapter {
 		
 		Events event = getItem(position);
 		textViewTitle.setText(event.getTitle());
-		textViewDate.setText(event.getMonth() + File.separator + event.getYear());
-		textViewNumOfInvits.setText(event.getAttendees().length);
+		textViewDate.setText(event.getDay() + File.separator + event.getMonth());
+		
+		String[] attendees = event.getAttendees();
+		if (attendees[0].equals("")) {
+			textViewNumOfInvits.setText("0 attendees");
+		} else {
+			textViewNumOfInvits.setText(event.getAttendees().length + " attendees");
+		}
 		
 		return outerLL;
 	}

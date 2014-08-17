@@ -10,12 +10,12 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
-import au.edu.unimelb.benjamin.socialeventplannerv1.R;
 import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import au.edu.unimelb.benjamin.socialeventplannerv1.R;
 import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
 
 public class DataUtil {
-	//TODO Android IO
 	
 	private static ArrayList<Events> eventsList;
 
@@ -24,7 +24,7 @@ public class DataUtil {
 		try {
 			ObjectInputStream inputFile = 
 					new ObjectInputStream(
-							new FileInputStream(context.getFilesDir() + File.separator + R.string.data_file_name));
+							new FileInputStream(context.getFilesDir() + File.separator + context.getResources().getString(R.string.data_file_name)));
 			eventsList = ((ArrayList<Events>) inputFile.readObject());
 			inputFile.close();
 		} catch (StreamCorruptedException e) {
@@ -36,7 +36,10 @@ public class DataUtil {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Events>();
+		if (eventsList == null) {
+			eventsList = new ArrayList<Events>();
+		}
+		return eventsList;
 	}
 	
 	public static void saveData(Context context, Events event) {
@@ -44,19 +47,44 @@ public class DataUtil {
 		try {
 			
 			getData(context);
-			if (eventsList == null) {
-				eventsList = new ArrayList<Events>();
-			}
 			eventsList.add(event);
 			ObjectOutputStream outputFile = 
 					new ObjectOutputStream(
-							new FileOutputStream(context.getFilesDir() + File.separator + R.string.data_file_name));
+							new FileOutputStream(context.getFilesDir() + File.separator + context.getResources().getString(R.string.data_file_name)));
 			outputFile.writeObject(eventsList);
 			outputFile.flush();
 			outputFile.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void editData(Context context, Events event) {
+		getData(context);
+		for (Events toFind : eventsList) {
+			if (event.getId() == toFind.getId()) {
+				eventsList.remove(toFind);
+				break;
+			}
+		}
+		eventsList.add(event);
+		ObjectOutputStream outputFile;
+		try {
+			outputFile = new ObjectOutputStream(
+					new FileOutputStream(context.getFilesDir() + File.separator + context.getResources().getString(R.string.data_file_name)));
+			outputFile.writeObject(eventsList);
+			outputFile.flush();
+			outputFile.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

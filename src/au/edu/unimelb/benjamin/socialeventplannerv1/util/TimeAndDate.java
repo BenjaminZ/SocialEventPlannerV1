@@ -21,7 +21,7 @@ public class TimeAndDate {
 	}
 	
 	public static int getCurrentMinute() {
-		SimpleDateFormat formatter = new SimpleDateFormat("ss");
+		SimpleDateFormat formatter = new SimpleDateFormat("mm");
 		Date currentMinute = new Date(System.currentTimeMillis());
 		
 		return Integer.parseInt(formatter.format(currentMinute));
@@ -36,7 +36,7 @@ public class TimeAndDate {
 	}
 	
 	public static int getCurrentYear() {
-		SimpleDateFormat formatter = new SimpleDateFormat("yy");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
 		Date currentYear = new Date(System.currentTimeMillis());
 		int year = Integer.parseInt(formatter.format(currentYear));
 		

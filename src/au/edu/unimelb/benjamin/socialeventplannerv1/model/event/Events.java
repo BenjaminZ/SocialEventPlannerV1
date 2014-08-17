@@ -140,10 +140,26 @@ public class Events implements Serializable,Comparable<Events>{
 
 	@Override
 	public int compareTo(Events another) {
-		if (id < another.getId()) {
-			return -1;
-		} else if (id == another.getId()) {
-			return 0;
+		if (year <= another.getYear()) {
+			if (month <= another.getMonth()) {
+				if (day <= another.getDay()) {
+					if (hour <= another.getHour()) {
+						if (minute < another.getMinute()) {
+							return 1;
+						} else if (minute == another.getMinute()) {
+							return 0;
+						} else {
+							return -1;
+						}
+					} else {
+						return -1;
+					}
+				} else {
+					return -1;
+				}
+			} else {
+				return -1;
+			}
 		} else {
 			return -1;
 		}

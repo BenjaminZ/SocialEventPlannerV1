@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,9 +38,55 @@ public class NewEventActivity extends Activity {
 	private String venue;
 	private String note;
 	private String[] attendees;
+	
+	public EditText getEditTitle() {
+		return editTitle;
+	}
+
+	public EditText getEditVenue() {
+		return editVenue;
+	}
+
+	public EditText getEditNote() {
+		return editNote;
+	}
+
+	public MultiAutoCompleteTextView getEditEmail() {
+		return editEmail;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public int getHour() {
+		return hour;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public DatePickerDialog getDateDialog() {
+		return dateDialog;
+	}
+	
+	public TimePickerDialog getTimeDialog() {
+		return timeDialog;
+	}
 	private EditText editTitle, editVenue, editNote;
 	private Button buttonEditTime, buttonEditDate, buttonDone;
 	private MultiAutoCompleteTextView editEmail;
+	private DatePickerDialog dateDialog;
+	private TimePickerDialog timeDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +99,14 @@ public class NewEventActivity extends Activity {
 		
 	}
 	
-	private void findEditTexts() {
+	public void findEditTexts() {
 		
 		editTitle = (EditText) findViewById(R.id.editTextTitle);
 		editVenue = (EditText) findViewById(R.id.editTextVenue);
 		editNote = (EditText) findViewById(R.id.editTextNote);
 	}
 	
-	private void findButtons() {
+	public void findButtons() {
 		
 		buttonEditTime = (Button) findViewById(R.id.buttonNewEditTime);
 		buttonEditDate = (Button) findViewById(R.id.buttonNewEditDate);
@@ -70,7 +117,7 @@ public class NewEventActivity extends Activity {
 		buttonDone.setOnClickListener(buttonClickListener);
 	}
 	
-	private void findEditEmail() {
+	public void findEditEmail() {
 		
 		EditEmailListener editEmailListener = new EditEmailListener();
 		editEmail = (MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextViewEmail);
@@ -82,7 +129,7 @@ public class NewEventActivity extends Activity {
 		editEmail.setAdapter(adapter);
 	}
 	
-	private void setParameters() {
+	public void setParameters() {
 		title = editTitle.getText().toString();
 		venue = editVenue.getText().toString();
 		note = editNote.getText().toString();
@@ -104,21 +151,23 @@ public class NewEventActivity extends Activity {
 			return false;
 		}
 		
-		private void tokenEraser() {
-			
-			if (!TextUtils.isEmpty(editEmail.getText())) {
-				
-				String text = editEmail.getText().toString();
-				if (text.charAt(text.length() - 1) == ' ') {
-					
-					editEmail.setText(text.substring(0, text.length() - 2));
-				}
-			}
-		}
 		
 	}
 	
-	private String[] setAdapter() {
+	public void tokenEraser() {
+		String msg = editEmail.getText().toString();
+		Log.v("edit", msg);
+		if (!TextUtils.isEmpty(editEmail.getText())) {
+			
+			String text = editEmail.getText().toString();
+			if (text.charAt(text.length() - 1) == ' ') {
+				
+				editEmail.setText(text.substring(0, text.length() - 2));
+			}
+		}
+	}
+	
+	public String[] setAdapter() {
 		
 		ArrayList<String> emailAddressCollection = new ArrayList<String>();
 		ContentResolver cr = getContentResolver();
@@ -157,9 +206,7 @@ public class NewEventActivity extends Activity {
 				
 			case R.id.buttonNewDone:
 				setParameters();
-				EventsBuilder eventsBuilder = new EventsBuilder(title, minute, hour, day, month, year, venue, note, attendees);
-				Events event = eventsBuilder.getEvent();
-				DataUtil.saveData(NewEventActivity.this, event);
+				setEvent();
 				finish();
 				break;
 				
@@ -171,22 +218,23 @@ public class NewEventActivity extends Activity {
 		
 	}
 	
-	private void datePicker() {
+	public void setEvent() {
+		EventsBuilder eventsBuilder = new EventsBuilder(title, minute, hour, day, month, year, venue, note, attendees);
+		Events event = eventsBuilder.getEvent();
+		DataUtil.saveData(NewEventActivity.this, event);
 		
-		new TimePickerDialog(NewEventActivity.this, new OnTimeSetListener() {
-			
-			@Override
-			public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-				
-				hour = hourOfDay;
-				NewEventActivity.this.minute = minute;
-			}
-		}, TimeAndDate.getCurrentHour(), TimeAndDate.getCurrentMinute(), true).show();
 	}
 	
-	private void timePicker() {
+	public void datePicker() {
+//		int currentYear = TimeAndDate.getCurrentYear();
+//		int currentMonth = TimeAndDate.getCurrentMonth() - 1;
+//		int currentDay = TimeAndDate.getCurrentDay();
+//		
+//		Log.v("date", currentYear + "year");
+//		Log.v("date", currentMonth + "month");
+//		Log.v("date", currentDay + "day");
 		
-		new DatePickerDialog(NewEventActivity.this, new OnDateSetListener() {
+		dateDialog = new DatePickerDialog(NewEventActivity.this, new OnDateSetListener() {
 			
 			@Override
 			public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -196,8 +244,27 @@ public class NewEventActivity extends Activity {
 				month = monthOfYear;
 				NewEventActivity.this.year = year;
 			}
-		}, 1970, 0, 30).show();
+		}, TimeAndDate.getCurrentYear(), TimeAndDate.getCurrentMonth() - 1, TimeAndDate.getCurrentDay());
+//		}, 1989, 11, 30);
+//		}, currentYear, currentMonth, currentDay);
+		dateDialog.show();
 	}
+	
+	public void timePicker() {
+		
+		timeDialog = new TimePickerDialog(NewEventActivity.this, new OnTimeSetListener() {
+			
+			@Override
+			public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+				
+				hour = hourOfDay;
+				NewEventActivity.this.minute = minute;
+			}
+		}, TimeAndDate.getCurrentHour(), TimeAndDate.getCurrentMinute(), true);
+		
+		timeDialog.show();
+	}
+
 	
 
 }
