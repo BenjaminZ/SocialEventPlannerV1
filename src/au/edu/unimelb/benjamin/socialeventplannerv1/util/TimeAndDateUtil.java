@@ -3,7 +3,7 @@ package au.edu.unimelb.benjamin.socialeventplannerv1.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TimeAndDate {
+public class TimeAndDateUtil {
 
 	public static int getCurrentDay() {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd");

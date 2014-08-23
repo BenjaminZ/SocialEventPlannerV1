@@ -58,7 +58,7 @@ public class ListCellAdapter extends BaseAdapter {
 		if (convertView != null) {
 			outerLL = (LinearLayout) convertView;
 		} else {
-			outerLL = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.adapter_events_list_cell, null);
+			outerLL = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.adapter_events_list_cell, parent, false);
 		}
 		
 		TextView textViewTitle, textViewDate, textViewNumOfInvits;

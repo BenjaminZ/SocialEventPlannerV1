@@ -1,7 +1,7 @@
 package au.edu.unimelb.benjamin.socialeventplannerv1.model.event;
 
 import android.text.TextUtils;
-import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDate;
+import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDateUtil;
 
 public class EventsBuilder {
 	
@@ -32,19 +32,19 @@ public class EventsBuilder {
 			title = "Event";
 		}
 		if (minute == 0) {
-			minute = TimeAndDate.getCurrentMinute();
+			minute = TimeAndDateUtil.getCurrentMinute();
 		}
 		if (hour == 0) {
-			hour = TimeAndDate.getCurrentHour();
+			hour = TimeAndDateUtil.getCurrentHour();
 		}
 		if (day == 0) {
-			day = TimeAndDate.getCurrentDay();
+			day = TimeAndDateUtil.getCurrentDay();
 		}
 		if (month == 0) {
-			month = TimeAndDate.getCurrentMonth();
+			month = TimeAndDateUtil.getCurrentMonth();
 		}
 		if (year == 0) {
-			year = TimeAndDate.getCurrentYear();
+			year = TimeAndDateUtil.getCurrentYear();
 		}
 		if (TextUtils.isEmpty(venue)) {
 			latitude = 0.0;

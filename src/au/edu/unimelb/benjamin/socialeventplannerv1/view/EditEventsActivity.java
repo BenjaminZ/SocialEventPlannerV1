@@ -31,12 +31,13 @@ public class EditEventsActivity extends NewEventActivity {
 	
 	public void findDeleteButton() {
 		buttonDeleteEvent = (Button) findViewById(R.id.buttonDeleteEvent);
+		buttonDeleteEvent.setVisibility(android.view.View.VISIBLE);
 		buttonDeleteEvent.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				DataUtil.deleteData(EditEventsActivity.this, event);
+				finish();
 			}
 		});
 	}

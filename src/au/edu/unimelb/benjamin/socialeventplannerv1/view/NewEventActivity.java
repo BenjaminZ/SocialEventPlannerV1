@@ -29,7 +29,7 @@ import au.edu.unimelb.benjamin.socialeventplannerv1.R;
 import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
 import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.EventsBuilder;
 import au.edu.unimelb.benjamin.socialeventplannerv1.util.DataUtil;
-import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDate;
+import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDateUtil;
 
 public class NewEventActivity extends Activity {
 	
@@ -81,6 +81,21 @@ public class NewEventActivity extends Activity {
 	
 	public TimePickerDialog getTimeDialog() {
 		return timeDialog;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public Button getButtonEditDate() {
+		return buttonEditDate;
 	}
 	private EditText editTitle, editVenue, editNote;
 	private Button buttonEditTime, buttonEditDate, buttonDone;
@@ -241,11 +256,10 @@ public class NewEventActivity extends Activity {
 					int dayOfMonth) {
 				
 				day = dayOfMonth;
-				month = monthOfYear;
+				month = monthOfYear + 1;
 				NewEventActivity.this.year = year;
 			}
-		}, TimeAndDate.getCurrentYear(), TimeAndDate.getCurrentMonth() - 1, TimeAndDate.getCurrentDay());
-//		}, 1989, 11, 30);
+		}, TimeAndDateUtil.getCurrentYear(), TimeAndDateUtil.getCurrentMonth() - 1, TimeAndDateUtil.getCurrentDay());
 //		}, currentYear, currentMonth, currentDay);
 		dateDialog.show();
 	}
@@ -260,7 +274,7 @@ public class NewEventActivity extends Activity {
 				hour = hourOfDay;
 				NewEventActivity.this.minute = minute;
 			}
-		}, TimeAndDate.getCurrentHour(), TimeAndDate.getCurrentMinute(), true);
+		}, TimeAndDateUtil.getCurrentHour(), TimeAndDateUtil.getCurrentMinute(), true);
 		
 		timeDialog.show();
 	}

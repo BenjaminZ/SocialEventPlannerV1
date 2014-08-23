@@ -1,6 +1,7 @@
 package au.edu.unimelb.benjamin.socialeventplannerv1.model.event;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 
 
@@ -140,31 +141,37 @@ public class Events implements Serializable,Comparable<Events>{
 
 	@Override
 	public int compareTo(Events another) {
-		if (year <= another.getYear()) {
-			if (month <= another.getMonth()) {
-				if (day <= another.getDay()) {
-					if (hour <= another.getHour()) {
-						if (minute < another.getMinute()) {
-							return 1;
-						} else if (minute == another.getMinute()) {
-							return 0;
-						} else {
-							return -1;
-						}
-					} else {
-						return -1;
-					}
-				} else {
-					return -1;
-				}
-			} else {
-				return -1;
-			}
-		} else {
-			return -1;
-		}
+		
+//		if (year > another.getYear()) {
+//			return -1;
+//		} else if (year < another.getYear()) {
+//			return 1;
+//		} else if (month > another.getMonth()) {
+//			return -1;
+//		} else if (month < another.getMonth()) {
+//			return 1;
+//		} else if (day > another.getDay()) {
+//			return -1;
+//		} else if (day < another.getDay()) {
+//			return 1;
+//		} else if (hour > another.getHour()) {
+//			return -1;
+//		} else if (hour < another.getHour()) {
+//			return 1;
+//		} else if (minute > another.getMinute()) {
+//			return -1;
+//		} else if (minute < another.minute) {
+//			return 1;
+//		} else {
+//			return 0;
+//		}
+		
+		Calendar date = Calendar.getInstance();
+		date.set(year, month, day, hour, minute);
+		Calendar dateAnother = Calendar.getInstance();
+		dateAnother.set(another.getYear(), another.getMonth(), another.getDay(), another.getHour(), another.getMinute());
+		return date.compareTo(dateAnother);
 	}
-	
 	
 	
 	

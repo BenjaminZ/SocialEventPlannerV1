@@ -35,7 +35,13 @@
             android:name=".view.EditEventsActivity"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
-        <activity android:name=".view.ViewEvents" >
+        <activity android:name=".view.ViewEventsActivity" >
+        </activity>
+        <activity
+            android:name=".view.MyCalendarActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".view.CalendarNewEventActivity" >
         </activity>
     </application>
 

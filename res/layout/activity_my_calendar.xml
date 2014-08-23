@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonCalendarLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_calendar_left" />
+
+        <TextView
+            android:id="@+id/textViewCalendarMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="month"
+            style="@android:style/TextAppearance.Large" />
+
+        <Button
+            android:id="@+id/buttonCalendarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_calendar_right" />
+
+        <TextView
+            android:id="@+id/textViewCalendarYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="year"
+            style="@android:style/TextAppearance.Large" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gridViewCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="7" >
+    </GridView>
+
+</LinearLayout>

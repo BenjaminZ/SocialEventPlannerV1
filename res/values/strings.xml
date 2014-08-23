@@ -16,5 +16,8 @@
 	<string name="button_new_done">Done</string>
 	<string name="data_file_name">data.dat</string>
 	<string name="button_delete_event">Delete</string>
+	<string name="button_calendar_left">Front</string>
+	<string name="button_calendar_right">Next</string>
+	<string name="button_calendar_new_event">New Event</string>
     
 </resources>

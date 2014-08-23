@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
+import android.util.Log;
 import au.edu.unimelb.benjamin.socialeventplannerv1.R;
 import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
 
@@ -29,12 +30,16 @@ public class DataUtil {
 			inputFile.close();
 		} catch (StreamCorruptedException e) {
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		}
 		if (eventsList == null) {
 			eventsList = new ArrayList<Events>();
@@ -43,11 +48,14 @@ public class DataUtil {
 	}
 	
 	public static void saveData(Context context, Events event) {
-		
+		getData(context);
+		eventsList.add(event);
+		saveData(context);
+	}
+	
+	private static void saveData(Context context) {
 		try {
 			
-			getData(context);
-			eventsList.add(event);
 			ObjectOutputStream outputFile = 
 					new ObjectOutputStream(
 							new FileOutputStream(context.getFilesDir() + File.separator + context.getResources().getString(R.string.data_file_name)));
@@ -56,8 +64,10 @@ public class DataUtil {
 			outputFile.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		}
 	}
 	
@@ -78,14 +88,25 @@ public class DataUtil {
 			outputFile.flush();
 			outputFile.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		} catch (NotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Log.d("Exeptions", e.getMessage());
 		}
+	}
+	
+	public static void deleteData(Context context, Events event) {
+		getData(context);
+		for (Events toDelete : eventsList) {
+			if (toDelete.getId() == event.getId()) {
+				eventsList.remove(toDelete);
+				break;
+			}
+		}
+		saveData(context);
 	}
 }
