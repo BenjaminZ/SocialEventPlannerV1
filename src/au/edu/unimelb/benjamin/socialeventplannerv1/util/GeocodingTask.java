@@ -76,7 +76,7 @@ public class GeocodingTask extends AsyncTask<String, Void, GeoResponse> {
     private OnResponseListener mListener;
 
     public interface OnResponseListener {
-        public void onResponse(Location location); // 也可是直接返回GeoResult，然后自行解析
+        public void onResponse(Location location); // 也可是直接返回GeoResult，然后自行索取需要的内容
     }
 
     public void setOnResponseListener(OnResponseListener listener) {
