@@ -70,6 +70,7 @@ public class GeocodingTask extends AsyncTask<String, Void, GeoResponse> {
         } else {
             // 解析失败
             Log.i("geo", "error");
+            mListener.onError();
         }
     }
 
@@ -77,6 +78,7 @@ public class GeocodingTask extends AsyncTask<String, Void, GeoResponse> {
 
     public interface OnResponseListener {
         public void onResponse(Location location); // 也可是直接返回GeoResult，然后自行索取需要的内容
+        public void onError();
     }
 
     public void setOnResponseListener(OnResponseListener listener) {
