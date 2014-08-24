@@ -65,10 +65,21 @@ public class GeocodingTask extends AsyncTask<String, Void, GeoResponse> {
                 double lat = location.getLat();
                 double lng = location.getLng();
                 Log.i("geo", "lat=" + lat + ", lng=" + lng);
+                mListener.onResponse(location);
             }
         } else {
             // 解析失败
             Log.i("geo", "error");
         }
+    }
+
+    private OnResponseListener mListener;
+
+    public interface OnResponseListener {
+        public void onResponse(Location location); // 也可是直接返回GeoResult，然后自行解析
+    }
+
+    public void setOnResponseListener(OnResponseListener listener) {
+        this.mListener = listener;
     }
 }
