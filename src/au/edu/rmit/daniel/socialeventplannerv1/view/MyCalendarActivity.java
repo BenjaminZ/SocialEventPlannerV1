@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.view;
+package au.edu.rmit.daniel.socialeventplannerv1.view;
 
 import java.util.Calendar;
 
@@ -13,8 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
-import au.edu.unimelb.benjamin.socialeventplannerv1.R;
-import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDateUtil;
+import au.edu.rmit.daniel.socialeventplannerv1.util.TimeAndDateUtil;
+import au.edu.rmit.daniel.socialeventplannerv1.R;
 
 public class MyCalendarActivity extends Activity {
 	

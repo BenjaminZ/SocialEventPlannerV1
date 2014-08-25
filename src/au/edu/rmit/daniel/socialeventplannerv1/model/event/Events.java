@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.model.event;
+package au.edu.rmit.daniel.socialeventplannerv1.model.event;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -18,7 +18,13 @@ public class Events implements Serializable,Comparable<Events>{
 	private String note;
 	private String[] attendees;
 	private long id;
+	private String location;
 	
+	public String getLocation() {
+		return location;
+	}
+
+
 	protected Events(String title, int minute, int hour, int day, int month, int year, String venue, double longitude, double latitude, String note, String[] attendees) {
 		this.title = title;
 		this.minute = minute;
@@ -31,6 +37,7 @@ public class Events implements Serializable,Comparable<Events>{
 		this.latitude = latitude;
 		this.note = note;
 		this.attendees = attendees;
+		location = latitude + ", " + longitude;
 		id = System.currentTimeMillis();
 	}
 

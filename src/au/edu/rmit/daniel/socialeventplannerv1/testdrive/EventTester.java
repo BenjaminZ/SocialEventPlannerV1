@@ -1,8 +1,8 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.testdrive;
+package au.edu.rmit.daniel.socialeventplannerv1.testdrive;
 
 import android.app.Activity;
 import android.os.Bundle;
-import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
+import au.edu.rmit.daniel.socialeventplannerv1.model.event.Events;
 
 public class EventTester extends Activity{
 
@@ -10,7 +10,7 @@ public class EventTester extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		//TODO
 		super.onCreate(savedInstanceState);
-		setContentView(au.edu.unimelb.benjamin.socialeventplannerv1.R.layout.tester_event);
+		setContentView(au.edu.rmit.daniel.socialeventplannerv1.R.layout.tester_event);
 		
 		String[] attendees = new String[] {"benjaminzhang1130@gmail.com"};
 		

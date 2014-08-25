@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.model;
+package au.edu.rmit.daniel.socialeventplannerv1.model;
 
 public class GeoResult {
     private String formatted_address;

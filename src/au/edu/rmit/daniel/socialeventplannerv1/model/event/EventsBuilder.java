@@ -1,7 +1,10 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.model.event;
+package au.edu.rmit.daniel.socialeventplannerv1.model.event;
 
 import android.text.TextUtils;
-import au.edu.unimelb.benjamin.socialeventplannerv1.util.TimeAndDateUtil;
+import au.edu.rmit.daniel.socialeventplannerv1.model.GeoResult.Location;
+import au.edu.rmit.daniel.socialeventplannerv1.util.GeocodingTask;
+import au.edu.rmit.daniel.socialeventplannerv1.util.TimeAndDateUtil;
+import au.edu.rmit.daniel.socialeventplannerv1.util.GeocodingTask.OnResponseListener;
 
 public class EventsBuilder {
 	
@@ -57,9 +60,20 @@ public class EventsBuilder {
 	}
 	
 	private void getLocation() {
-		//TODO
 		
 		latitude = 0.0;
 		longitude = 0.0;
+		
+		GeocodingTask geoTask = new GeocodingTask();
+		geoTask.execute(venue);
+		geoTask.setOnResponseListener(new OnResponseListener() {
+			
+			@Override
+			public void onResponse(Location location) {
+
+				latitude = location.getLat();
+				longitude = location.getLng();
+			}
+		});
 	}
 }

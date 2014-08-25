@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.util;
+package au.edu.rmit.daniel.socialeventplannerv1.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
 import android.util.Log;
-import au.edu.unimelb.benjamin.socialeventplannerv1.R;
-import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
+import au.edu.rmit.daniel.socialeventplannerv1.model.event.Events;
+import au.edu.rmit.daniel.socialeventplannerv1.R;
 
 public class DataUtil {
 	

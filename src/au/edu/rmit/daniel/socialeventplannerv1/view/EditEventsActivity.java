@@ -1,13 +1,13 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.view;
+package au.edu.rmit.daniel.socialeventplannerv1.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import au.edu.unimelb.benjamin.socialeventplannerv1.R;
-import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
-import au.edu.unimelb.benjamin.socialeventplannerv1.util.DataUtil;
+import au.edu.rmit.daniel.socialeventplannerv1.model.event.Events;
+import au.edu.rmit.daniel.socialeventplannerv1.util.DataUtil;
+import au.edu.rmit.daniel.socialeventplannerv1.R;
 
 
 public class EditEventsActivity extends NewEventActivity {

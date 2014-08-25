@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.model;
+package au.edu.rmit.daniel.socialeventplannerv1.model;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import au.edu.unimelb.benjamin.socialeventplannerv1.R;
-import au.edu.unimelb.benjamin.socialeventplannerv1.model.event.Events;
+import au.edu.rmit.daniel.socialeventplannerv1.model.event.Events;
+import au.edu.rmit.daniel.socialeventplannerv1.R;
 
 public class ListCellAdapter extends BaseAdapter {
 	

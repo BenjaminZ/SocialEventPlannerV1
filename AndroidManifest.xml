@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="au.edu.unimelb.benjamin.socialeventplannerv1"
+    package="au.edu.rmit.daniel.socialeventplannerv1"
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".view.MainActivity"
+            android:name="au.edu.rmit.daniel.socialeventplannerv1.view.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,23 +25,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".testdrive.EventTester" >
+        <activity android:name="au.edu.rmit.daniel.socialeventplannerv1.testdrive.EventTester" >
         </activity>
         <activity
-            android:name=".view.NewEventActivity"
+            android:name="au.edu.rmit.daniel.socialeventplannerv1.view.NewEventActivity"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name=".view.EditEventsActivity"
+            android:name="au.edu.rmit.daniel.socialeventplannerv1.view.EditEventsActivity"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
-        <activity android:name=".view.ViewEventsActivity" >
+        <activity android:name="au.edu.rmit.daniel.socialeventplannerv1.view.ViewEventsActivity" >
         </activity>
         <activity
-            android:name=".view.MyCalendarActivity"
+            android:name="au.edu.rmit.daniel.socialeventplannerv1.view.MyCalendarActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name=".view.CalendarNewEventActivity" >
+        <activity android:name="au.edu.rmit.daniel.socialeventplannerv1.view.CalendarNewEventActivity" >
         </activity>
     </application>
 

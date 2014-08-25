@@ -1,4 +1,4 @@
-package au.edu.unimelb.benjamin.socialeventplannerv1.util;
+package au.edu.rmit.daniel.socialeventplannerv1.util;
 
 import java.io.InputStream;  
   
